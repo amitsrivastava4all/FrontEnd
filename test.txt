@@ -1,0 +1,286 @@
+ES6 , ES7, ES8
+
+// const and let
+const PI = 3.14;
+        console.log("PI is ",PI);
+
+        const x  =[];
+        x.push(10);
+        x.push(20);
+
+        const y = {};
+        y.a = 10;
+
+        // Block Level Scope v/s Variable hoisting
+        function show(){
+            for(let i = 1; i<=10; i++){
+                if(i==5){
+                    let k = 10;
+                }
+            }
+        }
+
+
+
+// Arrow
+ var add = (x,y)=>x+y;
+        console.log(add());
+
+        // ES6 Also Create Some Helper Methods 
+        // String helper methods
+        let name = "Amit";
+        let result = name.repeat(10);
+        console.log(result);
+        result = "Mr Ram".startsWith("Mr");  // give boolean result  (also endsWith)
+        result = "Hello How are You".includes("How"); // give booelan string includes the value
+
+        // Number Helper Methods
+        result = Number.isSafeInteger(Math.pow(2,100));
+
+
+
+
+ // Arrow with Lexical this
+         var object= {
+            arr:[10,20,30,40,50],
+            evenArr:[],
+            oddArr:[],
+            fillEvenodd(){
+                
+                this.arr.forEach((num)=>{
+                    // now this function, has this of arr, because arr call the foreach , but for fillEvenOdd
+                    // method this is always object , because u call with object.fillEvenOdd
+                    if(num%2==0){
+                    this.evenArr.push(num);
+                    }
+                    else{
+                        this.oddArr.push(num);
+                    }
+                });
+            this.printNumbers();
+            },
+            printNumbers(){
+                this.evenArr.forEach(function(num){
+                    console.log(num);
+                });
+                this.oddArr.forEach(function(num){
+                    console.log(num);
+                });
+            }
+        }
+
+
+
+// default param
+
+function show(z,x=10,y=20){
+console.log("X is "+x+" and Y is "+y+" and Z is "+z);
+}
+show(1000);
+
+
+// rest param
+
+function f (x, y, ...a) {
+    return (x + y) * a.length;
+}
+f(1, 2, "hello", true, 7) === 9;
+
+
+// Spread with function
+        var x = [10,20,30];
+        function sum(a,b,c){
+            return a + b + c;
+        }
+        sum(...x);
+        // Spread with Array
+        var d = [10,20,30];
+        var e = [1,2,3];
+        var m = [11,22,...d,...e,999];
+        m.forEach((ff)=>console.log(ff);
+
+
+
+// Classes
+
+ class Employee{
+            constructor(id, name,salary){
+                this.id = id;
+                this.name = name;
+                this._salary = salary;
+            }
+            set salary(salary){
+                this._salary = salary;
+            }
+            get salary(){
+                return this._salary;
+            }
+            set bonus(bonus){
+                this._bonus = bonus;
+            }
+            get bonus(){
+                return this._bonus;
+            }
+            
+            static show(){
+                console.log("this is static example ");
+            }
+        }
+        var ram = new Employee(1001,'Ram',9999);
+        ram.bonus=88;
+        ram.bonus;
+        Employee.show();
+
+
+
+// IS-A (Inheritance)
+ class Person{
+            constructor(id,name,age){
+                this.id = id;
+                this.name = name;
+                this.age  = age;
+            }
+            toString(){
+                console.log(`Id is ${this.id}`);
+                 console.log(`Name is ${this.name}`);
+                  console.log(`Age is ${this.age}`);
+            }
+        }
+        class Student extends Person{
+            constructor(rollno,course){
+                super(1001,"Ram",21);
+                
+                this.rollno = rollno;
+                this.course = course;
+            }
+             toString(){
+                 super.toString();
+                console.log(`Rollno is ${this.rollno}`);
+                 console.log(`Course is ${this.course}`);
+                  console.log(`Again Name is ${this.name}`);
+            }
+        }
+        var ram =new Student(10,"MCA");
+        ram.toString();
+
+
+// String Interpolation
+ var name = "Amit";
+        var job = "Trianer";
+        console.log(`My Name is ${name} and Job is ${job}`);
+
+        // MultiLine Using String Interpolation way
+        var multiLine = ` Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+         Consequatur at, ipsam deserunt. A laborum porro ducimus? Est quod vitae,
+          excepturi commodi, porro quos, inventore ut praesentium vel deserunt modi sed!`;
+
+
+// Binary and Octal
+   0b1010==10  // Binary start with 0b
+        0o12==10  // Octal start with 0o
+
+
+ // Property Short Hand Example
+        var x = 100;
+        var y = 200;
+        var object = {x,y, show(){
+            console.log(`x is ${this.x} and Y is ${this.y} `);
+        }
+        }
+        // Create Computed Property
+        var x = 100;
+        var d ={["a"+x]:900};
+        console.log(d.a100);  // Will give 900 as value
+
+
+ // Array Destructuring
+        var [a,b] = [100,200];
+        console.log(`A is ${a} and B is ${b}`);
+        // Object Destructing
+        var person = {
+            name:'Amit',
+            age : 21,
+            city:'Delhi',
+            country:'India'
+        };
+        let {name,age} = person;
+        console.log(`Name is ${name} and Age is ${age}`);
+
+
+// for of with array
+        var arr = [10,20,30];
+        for(let a of arr){
+            console.log(a);
+        }
+
+        // for of with string
+        var x= "Amit";
+        for(let y of x){
+            console.log(y);
+        }
+
+
+//D.S
+
+let a = new Set();
+        a.add(50);
+        a.add(30);
+        a.add("Amit");
+        a.add({x:100,y:200});
+        console.log("Set ",a);
+           a.add(30);
+           a.add("Amit");
+
+        console.log(a.size);
+        console.log(a.has(30));
+        // Converting Array into Set
+        let s = [1,6,3,2,4,6];
+        let b = new Set(s);
+        // Traverse a Set
+        for(let element of b.values()){
+            console.log(element);
+        }
+
+        // Map
+        let c = new Map();
+        c.set("amit",2222);
+        c.set("amit",3222);
+        c.set("amit",4222);
+        c.set("ram",2222);
+        c.set("shyam",1222);
+        console.log(c);
+        // Array Convert into Map
+        var arr=[[1,"Hello"],[2,"Ok"]];
+        let d = new Map(arr);
+        console.log(d);
+        for(let [key,value] of c.entries()){
+            console.log(key+" "+value);
+        }
+
+
+// Import, export
+const calcObject = {
+    add(x,y){
+        return x + y;
+    },
+    subtract(x,y){
+        return x - y;
+    }
+}
+
+function show(){
+    console.log("this is show");
+}
+
+const MAX = 1000;
+//export default calcObject;
+export {calcObject,MAX};
+
+
+
+import {calcObject,MAX} from './module1';
+import show from './defaultinmodule.js'
+console.log("Add is :::: "+calcObject.add(100,200));
+console.log(`MAX is ::: ${MAX}`);
+
+

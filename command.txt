@@ -1,0 +1,4 @@
+mkdir ES6
+cd ES6
+npm init -y
+npm install webpack -g

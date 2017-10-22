@@ -1,0 +1,11 @@
+<h1>{{title}}</h1>
+<h1 [class]="mystyle">{{message}}</h1>
+<input type="text"  [value]="message" (input)="takeInput($event)" >
+<br/>
+Result is  {{data}}
+<button type="button" (click)="show()">Click Me</button>
+
+<br/>
+<h2>2 Way </h2>
+<input type="text" [(ngModel)]="name">{{name}}
+

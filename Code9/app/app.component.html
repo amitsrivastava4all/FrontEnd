@@ -1,0 +1,36 @@
+<h1>{{title}}</h1>
+<h1 [class]="mystyle">{{message}}</h1>
+<input type="text"  [value]="message" (input)="takeInput($event)" >
+<br/>
+Result is  {{data}}
+<button type="button" (click)="show()">Click Me</button>
+
+<br/>
+<h2>2 Way </h2>
+<input type="text" [(ngModel)]="name">{{name}}
+<br>
+<hr>
+<fieldset>
+  <legend>
+      Calculator
+    </legend>
+    <table>
+      <tr>
+        <td><label for="">Enter the First Number</label></td>
+        <td><input type="text" (input)="takeFirstNo($event)"></td>
+      </tr>
+      <tr>
+        <td><label for="">Enter the Second Number</label></td>
+        <td><input type="text" (input)="takeSecondNo($event)"></td>
+      </tr>
+      <tr>
+        <td><button (click)="add($event)">Add</button></td>
+        <td><button (click)="subtract($event)">Subtract</button></td>
+      </tr>
+    </table>
+    <h3>After Multiply {{firstNumber}}</h3>
+    <h1>Result is {{result}}</h1>
+    <result-comp (parentmethod)="multiply($event)" [fnumber]="firstNumber" [message]="message2" [calcresult]="result"></result-comp>
+  </fieldset>
+<hr>
+<item-list></item-list>

@@ -1,0 +1,21 @@
+<div>
+  <h1>Item list </h1>
+  <ul *ngFor="let item of itemList">
+    <li *ngIf="item.price>1002">
+
+       <p [ngClass]="{'red':item.price>1006,'green':item.price<=1006}"> {{item.id}}  {{item.name}}  {{item.price}} {{item.desc}}  {{item.image}}</p>
+
+    </li>
+  </ul>
+</div>
+<div [hidden]="showme">
+  Show Hide Example
+</div>
+
+<h1>Switch Example</h1>
+<div [ngSwitch]="day">
+            <p *ngSwitchCase="1">Sunday</p>
+             <p *ngSwitchCase="2">Monday</p>
+
+            <p *ngSwitchDefault>Wrong Day</p>
+        </div>

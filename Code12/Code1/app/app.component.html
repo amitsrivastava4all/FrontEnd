@@ -1,0 +1,17 @@
+<h1>Validation Example!</h1>
+<form (ngSubmit)="formSubmit(form)" #form="ngForm">
+    <label for="">Name</label>
+    <input required type="text" #userNameInput="ngModel" name="username" ngModel>
+
+    <span class="error" *ngIf="userNameInput.invalid && userNameInput.touched">Name Can't be Blank!</span>
+    <br>
+    <label for="">Phone</label>
+    <input type="text" name="phone" ngModel required pattern="[0-9]{4,10}" #phoneInput="ngModel">
+
+    <span class="error" *ngIf="phoneInput.invalid && phoneInput.touched && phoneInput.pristine ">Phone no Can't be Blank!</span>
+    <span class="error" *ngIf="phoneInput.invalid && phoneInput.touched  && !phoneInput.pristine">Invalid Phone No</span>
+
+    <br/>
+    <button type="submit">Login </button>
+    <button type="submit" [disabled]="form.invalid">Login </button>
+</form>

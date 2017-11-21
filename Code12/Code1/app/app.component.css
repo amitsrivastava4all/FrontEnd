@@ -1,0 +1,16 @@
+input.ng-invalid {
+    border-color: red;
+    border-width: 1px;
+    border-style: solid;
+}
+
+input.ng-touched {
+    border-color: green;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.error {
+    color: red;
+    font-style: italic;
+}

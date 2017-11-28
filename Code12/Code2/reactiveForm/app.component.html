@@ -1,0 +1,29 @@
+<form [formGroup]="registerForm" (submit)="registerIt()">
+    <div formGroupName="userinfo">
+        <input type="text" formControlName="userid" placeholder="Type Userid Here">
+        <span class="red" *ngIf="!registerForm.get('userinfo.userid').valid && registerForm.get('userinfo.userid').touched">Userid Can't be Blank</span>
+        <span class="red" *ngIf="registerForm.get('userinfo.userid').errors['blackListed']">Userid Is BlackListed !</span>
+    </div>
+
+    <input type="text " formControlName="name" placeholder="Type Name Here ">
+    <span class="red" *ngIf="registerForm.get('name').invalid && registerForm.get('name').pristine && registerForm.get('name').touched">Name Can't be Blank</span>
+    <span class="red" *ngIf="registerForm.get('name').invalid && registerForm.get('name').touched && registerForm.get('name').dirty">Invalid Email</span>
+
+    <fieldset>
+        <legend>Address</legend>
+        <div formArrayName="address" class="form-group">
+            <h2>Add Address Info</h2>
+            <button (click)="addAddress()">Add Address</button>
+            <ul>
+                <li *ngFor="let address of registerForm.get('address').controls; let i=index">
+                    <input type="text" [formControlName]="i">
+                    <span class="red" *ngIf="!registerForm.get('address').controls[i].valid && registerForm.get('address').controls[i].touched">Address Can't Be Blank</span>
+
+                </li>
+            </ul>
+        </div>
+    </fieldset>
+
+
+    <button type="submit ">Register</button>
+</form>
